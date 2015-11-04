@@ -35,14 +35,14 @@
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="yFX-mQ-daR"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFF-Lu-eO0">
-                                            <rect key="frame" x="64" y="8" width="528" height="36"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFF-Lu-eO0">
+                                            <rect key="frame" x="64" y="8" width="528" height="19.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNF-QK-nPM">
-                                            <rect key="frame" x="64" y="35" width="528" height="182"/>
+                                            <rect key="frame" x="64" y="35" width="528" height="182.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="103" id="TYV-le-jZE"/>
                                                 <constraint firstAttribute="height" constant="103" id="gUK-1x-S5G"/>
@@ -125,20 +125,22 @@
                                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Fky-fh-0OA">
                                             <rect key="frame" x="290" y="149" width="20" height="20"/>
                                         </activityIndicatorView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c4H-iq-smi">
-                                            <rect key="frame" x="175" y="33" width="250" height="250"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c4H-iq-smi">
+                                            <rect key="frame" x="200" y="58" width="200" height="200"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="286" id="0S9-eZ-mrl"/>
                                                 <constraint firstAttribute="height" constant="305" id="1xk-Cl-Dd2"/>
-                                                <constraint firstAttribute="height" constant="250" id="20S-8N-Bmh"/>
+                                                <constraint firstAttribute="height" constant="200" id="20S-8N-Bmh"/>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="280" id="77y-aR-aCR"/>
                                                 <constraint firstAttribute="width" secondItem="c4H-iq-smi" secondAttribute="height" multiplier="1:1" id="CoE-Te-6KR"/>
+                                                <constraint firstAttribute="width" constant="200" id="TWI-9k-ht7"/>
                                                 <constraint firstAttribute="height" constant="280" id="W6i-iB-Cg1"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="0S9-eZ-mrl"/>
                                                     <exclude reference="1xk-Cl-Dd2"/>
+                                                    <exclude reference="20S-8N-Bmh"/>
                                                     <exclude reference="77y-aR-aCR"/>
                                                     <exclude reference="W6i-iB-Cg1"/>
                                                 </mask>
@@ -210,6 +212,7 @@
                                     <outlet property="imageBotMargin" destination="QrV-d5-teg" id="SAo-wJ-aMU"/>
                                     <outlet property="imageHeight" destination="20S-8N-Bmh" id="7fu-pW-e15"/>
                                     <outlet property="imageTopMargin" destination="UcG-kB-Tmx" id="zQ1-c8-1ua"/>
+                                    <outlet property="imageWidth" destination="TWI-9k-ht7" id="FVa-kL-08E"/>
                                     <outlet property="mentionsImage" destination="c4H-iq-smi" id="NMt-1q-bbr"/>
                                     <outlet property="mentionsTextLabel" destination="8dS-sZ-QIT" id="YIU-TR-0k3"/>
                                     <outlet property="spinner" destination="Fky-fh-0OA" id="Ko0-VC-FQ4"/>

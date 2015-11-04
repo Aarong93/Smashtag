@@ -13,6 +13,7 @@ class MentionsTableViewCell: UITableViewCell {
     @IBOutlet weak var mentionsTextLabel: UILabel!
     @IBOutlet weak var mentionsImage: UIImageView!
     @IBOutlet weak var imageHeight: NSLayoutConstraint!
+    @IBOutlet weak var imageWidth: NSLayoutConstraint!
     @IBOutlet weak var imageBotMargin: NSLayoutConstraint!
     @IBOutlet weak var imageTopMargin: NSLayoutConstraint!
 
@@ -49,6 +50,7 @@ class MentionsTableViewCell: UITableViewCell {
             
         else{
             imageHeight?.constant = 0;
+            imageWidth?.constant = 0;
             let text = data as? String
             mentionsImage?.hidden = true
             mentionsTextLabel?.hidden = false
