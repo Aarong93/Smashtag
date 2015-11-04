@@ -20,6 +20,8 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     
     var lastSuccesfulRequest: TwitterRequest?
     
+    // MARK: Load Tweets
+    
     var nextRequestToAttempt: TwitterRequest? {
         if lastSuccesfulRequest == nil{
             if searchText != nil {
@@ -58,6 +60,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     var searchText: String? = "#vandy"{
         didSet{
             lastSuccesfulRequest = nil
+            searchTextField.text = searchText
             tweets.removeAll()
             tableView.reloadData()
             refresh()
@@ -107,38 +110,36 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         return cell
     }
 
+    // MARK: Prepare for Segue
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let navigationController = segue.destinationViewController as? UINavigationController{
-            if let mentionsController = navigationController.viewControllers[0] as? MentionsTableViewController{
-                let path = self.tableView.indexPathForSelectedRow()
-                let tweet = tweets[path!.section][path!.row]
-                var images = [NSURL]()
-                for image in tweet.media{images.append(image.url)}
-                if !images.isEmpty{
-                    mentionsController.pushImages(images)
-                    mentionsController.sectionLabels.append("Images")
-                }
-                var hashtagsInText = [String]()
-                for hashtag in tweet.hashtags{hashtagsInText.append(hashtag.keyword)}
-                if !hashtagsInText.isEmpty{
-                    mentionsController.pushHashtags(hashtagsInText)
-                    mentionsController.sectionLabels.append("Hashtags")
-                }
-                var urlsInText = [String]()
-                for url in tweet.urls{urlsInText.append(url.keyword)}
-                if !urlsInText.isEmpty{
-                    mentionsController.pushURLs(urlsInText)
-                    mentionsController.sectionLabels.append("Links")
-                }
-                var usersInText = [String]()
-                for user in tweet.userMentions{usersInText.append(user.keyword)}
-                if !usersInText.isEmpty{
-                    mentionsController.pushUsers(usersInText)
-                    mentionsController.sectionLabels.append("Users Mentioned")
-                }
+        if let mentionsController = segue.destinationViewController as? MentionsTableViewController{
+            let path = self.tableView.indexPathForSelectedRow()
+            let tweet = tweets[path!.section][path!.row]
+            var images = [NSURL]()
+            for image in tweet.media{images.append(image.url)}
+            if !images.isEmpty{
+                mentionsController.pushImages(images)
+                mentionsController.sectionLabels.append("Images")
+            }
+            var hashtagsInText = [String]()
+            for hashtag in tweet.hashtags{hashtagsInText.append(hashtag.keyword)}
+            if !hashtagsInText.isEmpty{
+                mentionsController.pushHashtags(hashtagsInText)
+                mentionsController.sectionLabels.append("Hashtags")
+            }
+            var urlsInText = [String]()
+            for url in tweet.urls{urlsInText.append(url.keyword)}
+            if !urlsInText.isEmpty{
+                mentionsController.pushURLs(urlsInText)
+                mentionsController.sectionLabels.append("Links")
+            }
+            var usersInText = [String]()
+            for user in tweet.userMentions{usersInText.append(user.keyword)}
+            if !usersInText.isEmpty{
+                mentionsController.pushUsers(usersInText)
+                mentionsController.sectionLabels.append("Users Mentioned")
             }
         }
     }
-    
-
 }

@@ -27,6 +27,8 @@ class MentionsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
+    
+    
     private func updateUI(){
         mentionsTextLabel?.text = nil
         mentionsImage?.image = nil

@@ -26,15 +26,6 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DwQ-co-Fq8" id="cjF-qf-n0u">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qFI-b0-9fA">
-                                            <rect key="frame" x="8" y="0.0" width="48" height="48"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="48" id="4Ph-Ba-lIA"/>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="48" id="cGW-X2-YnT"/>
-                                                <constraint firstAttribute="width" constant="48" id="lJI-cU-Hw0"/>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="yFX-mQ-daR"/>
-                                            </constraints>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFF-Lu-eO0">
                                             <rect key="frame" x="64" y="8" width="528" height="19.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
@@ -57,10 +48,20 @@
                                                 </mask>
                                             </variation>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qFI-b0-9fA">
+                                            <rect key="frame" x="8" y="8" width="48" height="48"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="48" id="4Ph-Ba-lIA"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="48" id="cGW-X2-YnT"/>
+                                                <constraint firstAttribute="width" constant="48" id="lJI-cU-Hw0"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="yFX-mQ-daR"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="vNF-QK-nPM" firstAttribute="bottom" secondItem="cjF-qf-n0u" secondAttribute="bottomMargin" id="3AW-WC-wa9"/>
                                         <constraint firstItem="kFF-Lu-eO0" firstAttribute="top" secondItem="cjF-qf-n0u" secondAttribute="topMargin" id="9Qu-Bu-2fN"/>
+                                        <constraint firstItem="qFI-b0-9fA" firstAttribute="top" secondItem="cjF-qf-n0u" secondAttribute="topMargin" id="BT0-my-2AC"/>
                                         <constraint firstItem="qFI-b0-9fA" firstAttribute="top" secondItem="cjF-qf-n0u" secondAttribute="top" id="GzP-r0-Kek"/>
                                         <constraint firstItem="vNF-QK-nPM" firstAttribute="top" secondItem="kFF-Lu-eO0" secondAttribute="bottom" constant="7.5" id="TZ2-z1-fXe"/>
                                         <constraint firstItem="vNF-QK-nPM" firstAttribute="trailing" secondItem="kFF-Lu-eO0" secondAttribute="trailing" id="e3r-JW-pka"/>
@@ -74,6 +75,7 @@
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
+                                            <exclude reference="GzP-r0-Kek"/>
                                             <exclude reference="TZ2-z1-fXe"/>
                                             <exclude reference="jzt-0k-gd8"/>
                                             <exclude reference="wmN-Wf-XvB"/>
@@ -84,7 +86,7 @@
                                     <outlet property="tweetProfileImageView" destination="qFI-b0-9fA" id="w1M-jn-inR"/>
                                     <outlet property="tweetScreenNameLabel" destination="kFF-Lu-eO0" id="F61-2y-kHF"/>
                                     <outlet property="tweetTextLabel" destination="vNF-QK-nPM" id="pEu-Ki-k2g"/>
-                                    <segue destination="CDS-2N-A3N" kind="show" identifier="Mentions" id="h1d-4Z-ihk"/>
+                                    <segue destination="OOi-vN-ac9" kind="show" identifier="mentions" id="8C8-Ts-B7P"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -106,7 +108,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iai-XW-pgT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1457" y="443"/>
+            <point key="canvasLocation" x="1487" y="256"/>
         </scene>
         <!--Tweet Mentions-->
         <scene sceneID="xc6-8G-Tz6">
@@ -132,7 +134,7 @@
                                                 <constraint firstAttribute="height" constant="305" id="1xk-Cl-Dd2"/>
                                                 <constraint firstAttribute="height" constant="200" id="20S-8N-Bmh"/>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="280" id="77y-aR-aCR"/>
-                                                <constraint firstAttribute="width" secondItem="c4H-iq-smi" secondAttribute="height" multiplier="1:1" id="CoE-Te-6KR"/>
+                                                <constraint firstAttribute="width" secondItem="c4H-iq-smi" secondAttribute="height" id="CoE-Te-6KR"/>
                                                 <constraint firstAttribute="width" constant="200" id="TWI-9k-ht7"/>
                                                 <constraint firstAttribute="height" constant="280" id="W6i-iB-Cg1"/>
                                             </constraints>
@@ -228,7 +230,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uD6-mu-TgS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2872" y="443"/>
+            <point key="canvasLocation" x="2186" y="256"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1zF-bz-K57">
@@ -246,25 +248,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oDd-Dt-c9P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="752" y="443"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="KOM-nJ-vvr">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CDS-2N-A3N" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7de-BP-EF6">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="OOi-vN-ac9" kind="relationship" relationship="rootViewController" id="wkQ-1F-Drf"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cfS-F2-8Xq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2157" y="443"/>
+            <point key="canvasLocation" x="785" y="256"/>
         </scene>
     </scenes>
 </document>

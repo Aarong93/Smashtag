@@ -31,6 +31,15 @@ class MentionsTableViewController: UITableViewController {
     
     func pushImages( imageArray : [NSURL]){mentions.append(MentionType.Images(imageArray))}
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let text = mentions[indexPath.section].array()[indexPath.row] as? String{
+            if let tweetSearchViewController = self.presentingViewController as? TweetTableViewController{
+                tweetSearchViewController.searchText = text
+                tweetSearchViewController.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }
+    }
+    
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?
     {
         return sectionLabels[section]
