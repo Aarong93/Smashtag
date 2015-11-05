@@ -17,8 +17,6 @@ class MentionsTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
-
-    
     var sectionLabels = [String]()
     
     private var mentions = [MentionType]()
@@ -32,13 +30,33 @@ class MentionsTableViewController: UITableViewController {
     func pushImages( imageArray : [NSURL]){mentions.append(MentionType.Images(imageArray))}
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let text = mentions[indexPath.section].array()[indexPath.row] as? String{
-            if let tweetSearchViewController = self.presentingViewController as? TweetTableViewController{
-                tweetSearchViewController.searchText = text
-                tweetSearchViewController.dismissViewControllerAnimated(true, completion: nil)
+        if mentions[indexPath.section].simpleDescription() == UserMention || mentions[indexPath.section].simpleDescription() == Hashtag{
+            if let text = mentions[indexPath.section].array()[indexPath.row] as? String{
+                if let navController = self.navigationController{
+                    if let tweetSearchViewController = navController.viewControllers[(navController.viewControllers.count-2)] as? TweetTableViewController{
+                        tweetSearchViewController.searchText = text
+                        navController.popViewControllerAnimated(true)
+                    }
+                }
+            }
+        }
+        
+        if mentions[indexPath.section].simpleDescription() == URL{
+            if let url = NSURL(string: (mentions[indexPath.section].array()[indexPath.row] as String)){
+                UIApplication.sharedApplication().openURL(url)
+            }
+        }
+        
+        if mentions[indexPath.section].simpleDescription() == Image{
+            if let navController = self.navigationController{
+                if let imageController = self.storyboard?.instantiateViewControllerWithIdentifier("ImagePresenter") as? ImageViewController{
+                    imageController.imageURL = mentions[indexPath.section].array()[indexPath.row] as? NSURL
+                    navController.pushViewController(imageController, animated: true)
+                }
             }
         }
     }
+    
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?
     {

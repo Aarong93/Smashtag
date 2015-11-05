@@ -108,7 +108,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iai-XW-pgT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1487" y="256"/>
+            <point key="canvasLocation" x="1493" y="256"/>
         </scene>
         <!--Tweet Mentions-->
         <scene sceneID="xc6-8G-Tz6">
@@ -231,6 +231,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uD6-mu-TgS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2186" y="256"/>
+        </scene>
+        <!--Image-->
+        <scene sceneID="fc4-OX-BYW">
+            <objects>
+                <viewController restorationIdentifier="ImagePresenter" storyboardIdentifier="ImagePresenter" id="b3F-wy-Eei" customClass="ImageViewController" customModule="Smashtag" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NYy-pk-r0u"/>
+                        <viewControllerLayoutGuide type="bottom" id="OTd-lF-L8i"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vD5-tg-2cv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pFY-Oa-gWX">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </scrollView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="8Eq-gb-g0O">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pFY-Oa-gWX" firstAttribute="centerY" secondItem="8Eq-gb-g0O" secondAttribute="centerY" id="Kfj-gI-Di2"/>
+                            <constraint firstAttribute="trailing" secondItem="pFY-Oa-gWX" secondAttribute="trailing" id="LpK-5g-2qy"/>
+                            <constraint firstAttribute="centerY" secondItem="8Eq-gb-g0O" secondAttribute="centerY" id="cwH-Xs-4ba"/>
+                            <constraint firstItem="pFY-Oa-gWX" firstAttribute="bottom" secondItem="OTd-lF-L8i" secondAttribute="top" id="eqp-L8-OZo"/>
+                            <constraint firstItem="pFY-Oa-gWX" firstAttribute="leading" secondItem="vD5-tg-2cv" secondAttribute="leading" id="gCc-Rm-vWo"/>
+                            <constraint firstItem="pFY-Oa-gWX" firstAttribute="centerX" secondItem="8Eq-gb-g0O" secondAttribute="centerX" id="opz-VF-ib8"/>
+                            <constraint firstAttribute="centerX" secondItem="8Eq-gb-g0O" secondAttribute="centerX" id="xAF-3O-zH1"/>
+                            <constraint firstItem="pFY-Oa-gWX" firstAttribute="top" secondItem="vD5-tg-2cv" secondAttribute="top" id="zGo-QL-ePe"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Kfj-gI-Di2"/>
+                                <exclude reference="opz-VF-ib8"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Image" id="Y9C-Lr-qK8"/>
+                    <connections>
+                        <outlet property="scrollView" destination="pFY-Oa-gWX" id="dlf-0X-GGm"/>
+                        <outlet property="spinner" destination="8Eq-gb-g0O" id="5zo-8J-USY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CL4-aN-6M0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2868" y="256"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1zF-bz-K57">

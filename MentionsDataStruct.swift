@@ -8,6 +8,11 @@
 
 import UIKit
 
+let Image = "Image"
+let URL = "URL"
+let Hashtag = "Hashtag"
+let UserMention = "User"
+
 enum MentionType{
     case Images([NSURL])
     case URLs([String])
@@ -24,6 +29,19 @@ enum MentionType{
             return hashtagsArray.count
         case .Users(let usersArray):
             return usersArray.count
+        }
+    }
+    
+    func simpleDescription() -> String{
+        switch self{
+        case .Images(_):
+            return Image
+        case .URLs(_):
+            return URL
+        case .Hashtags(_):
+            return Hashtag
+        case .Users(_):
+            return UserMention
         }
     }
     
