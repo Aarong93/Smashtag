@@ -56,13 +56,28 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         sender?.endRefreshing()
         }
     }
+    
+    private struct Key{
+        static let searchesDone = "searchesDone"
+    }
 
-    var searchText: String? = "#vandy"{
+    var searchText: String? = "#rangers"{
         didSet{
             lastSuccesfulRequest = nil
-            searchTextField.text = searchText
             tweets.removeAll()
             tableView.reloadData()
+            if searchText != nil && searchText != "" {
+                searchTextField.text = searchText
+                let defaults = NSUserDefaults.standardUserDefaults()
+                var searchHistory = defaults.objectForKey(Key.searchesDone) as? [String] ?? [String]()
+                searchHistory = searchHistory.filter() { [unowned self] in $0 != self.searchText }
+                searchHistory.append(searchText!)
+                if searchHistory.count > 100{
+                    searchHistory.removeAtIndex(0)
+                }
+//                println("\(searchHistory)")
+                defaults.setObject(searchHistory, forKey: Key.searchesDone)
+            }
             refresh()
         }
     }
@@ -81,6 +96,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         }
         return true
     }
+    
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -102,9 +118,9 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     private struct Storyboard{
         static let CellReuseIdentifier = "Tweet"
     }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath) as TweetTableViewCell
-        
         cell.tweet = tweets[indexPath.section][indexPath.row]
         cell.backgroundColor = UIColor.lightGrayColor()
         return cell

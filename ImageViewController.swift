@@ -31,6 +31,9 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
         return imageView
     }
     
+    private var nativeHeight : CGFloat = CGFloat()
+    private var nativeWidth : CGFloat = CGFloat()
+    
     private func fetchImage(){
         if let url = imageURL {
             spinner?.startAnimating()
@@ -53,25 +56,39 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
     private var image: UIImage? = UIImage(){
         didSet{
             if image != nil{
+                self.nativeHeight = self.image!.size.height
+                self.nativeWidth = self.image!.size.width
+//                println("nativeHeight: \(self.nativeHeight)")
+//                println("nativeWidth: \(self.nativeWidth)")
                 imageView.image = image
-                imageView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: image!.size)
                 spinner?.stopAnimating()
+                imageView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: image!.size)
+                scrollView?.contentSize = image!.size
                 configureScrollView()
             }
         }
     }
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        super.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
+//        super.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
         configureScrollView()
     }
     
     private func configureScrollView(){
-        scrollView?.contentSize = imageView.frame.size
         let scrollViewFrame = scrollView.frame
-        let scaleWidth = scrollViewFrame.size.width / scrollView.contentSize.width
-        let scaleHeight = scrollViewFrame.size.height / scrollView.contentSize.height
-        let minScale = min(scaleWidth, scaleHeight);
+        let scaleWidth = scrollViewFrame.size.width / nativeWidth
+        let scaleHeight = scrollViewFrame.size.height / nativeHeight
+//        println("info from configure:")
+//        println("scrollViewFrame.size.width : \(scrollViewFrame.size.width)")
+//        println("scrollViewFrame.size.height : \(scrollViewFrame.size.height)")
+//        println("scaleWidth =  \(scaleWidth)")
+//        println("scaleHeight = \(scaleHeight)")
+//        println("image height = \(image!.size.height)")
+//        println("image width = \(image!.size.width)")
+//        println("content height = \(scrollView.contentSize.height)")
+//        println("content width = \(scrollView.contentSize.width)")
+//        println(" ")
+        let minScale = min(1, min(scaleWidth, scaleHeight));
         scrollView.minimumZoomScale = minScale;
         scrollView.maximumZoomScale = 1.0
         scrollView.zoomScale = minScale;
@@ -82,6 +99,7 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         scrollView.addSubview(imageView)
     }
+    
     
     
     override func viewWillAppear(animated: Bool) {

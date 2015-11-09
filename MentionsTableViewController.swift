@@ -71,7 +71,7 @@ class MentionsTableViewController: UITableViewController {
         return mentions[section].count()
     }
     
-    struct Storyboard{
+    private struct Storyboard{
         static let CellReuseIdentifier = "Mentions"
     }
     
