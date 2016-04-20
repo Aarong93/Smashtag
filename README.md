@@ -1,3 +1,3 @@
 # Smashtag
 
-- ios Swift learning sandbox
+- iOS Swift learning sandbox
